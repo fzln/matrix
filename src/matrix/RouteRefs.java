@@ -9,7 +9,7 @@ import java.util.*;
 public class RouteRefs {
     private Pair p;
     private List<String> strList;
-    private Deque<Reference> refs= new LinkedList<>();
+    private Queue<Reference> refs= new LinkedList<>();
 
     public RouteRefs(Pair p, String str) {
         this.p = p;
@@ -52,7 +52,7 @@ public class RouteRefs {
         return strList;
     }
 
-    public Deque<Reference> getRefs() {
+    public Queue<Reference> getRefs() {
         return refs;
     }
 

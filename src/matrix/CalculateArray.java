@@ -23,7 +23,7 @@ public class CalculateArray {
     }
 
     private void calculateCell(Pair p) {
-        Deque<RouteRefs> routes = new LinkedList<>();
+        Deque<RouteRefs> routes = new LinkedList<>();       // using as stack, LIFO.
         RouteRefs route = new RouteRefs(p, arrStr[p.getFirst()][p.getSecond()]);
         String str;                 // Parsed string
         Pair priorCell = p;         // dummy initialization to avoid the error
@@ -38,13 +38,13 @@ public class CalculateArray {
                 if (routes.isEmpty()) return;
 
                 RouteRefs routeDown = routes.peek();
-                Deque<Reference> downRefs = routeDown.getRefs();
-                routeDown.getStrList().set(downRefs.pop().getI(), str);
+                Queue<Reference> downRefs = routeDown.getRefs();
+                routeDown.getStrList().set(downRefs.remove().getI(), str);
 
                 if (downRefs.isEmpty()) route = routes.pop();       // Go to down
                 else {
                     // Go to down and next up
-                    p = downRefs.peek().getP();
+                    p = downRefs.element().getP();
 
                     priorCell = routeDown.getP();
                     doUp = true;
@@ -52,7 +52,7 @@ public class CalculateArray {
             } else {
                 // Go to up
                 routes.push(route);
-                p = route.getRefs().peek().getP();
+                p = route.getRefs().element().getP();
 
                 priorCell = route.getP();
                 doUp = true;
