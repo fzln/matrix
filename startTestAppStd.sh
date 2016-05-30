@@ -2,4 +2,4 @@
 
 cd out/production/matrix
 
-java matrix/Main t
+cat testSheet.txt |java matrix/Main

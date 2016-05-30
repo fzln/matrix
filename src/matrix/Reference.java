@@ -2,6 +2,7 @@ package matrix;
 
 /**
  * Created by f on 22.05.16.
+ *
  */
 public class Reference {
     private int i;      // index reference in strList
